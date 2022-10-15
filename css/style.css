@@ -1,0 +1,189 @@
+/* Style elements for the default view */
+
+/*1. Add animation on the logo */
+
+#logo{
+animation: logo-animation 5s;
+}
+
+/* Specify the animation start and end width and opacity */
+
+@keyframes logo-animation {
+    from{width:25px; opacity: 0;}
+    to{width:475px; opacity: 1;}
+}
+
+/*2. Style the body with Poppins font and specify serif font as a backup font. Set background image and color.*/
+
+body{
+    font-family: Poppins, serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/*3. Style header to display flex. Set flex-direction to column to stack items on top of each other and align them to  the center. */
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+/*4. Style nav_links class to display flex. Set flex-direction to column to stack items on top of each other and align them to  the center. */
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*5. (Challenge-1) Keep the link same color even after the link has been clicked. */
+
+a:visited{
+    color:blue;
+}
+
+/*6. Style only the header elements that are the direct children of the card class with the specified background color, border, padding and border-radius. */
+
+.card > header{
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0 20px 0;
+    border-radius: 50px 50px 0 0;
+}
+
+/*7. Style the card class in order to acheive the same width for all the cards and make the card's border corners rounded at the top so that they are the same as the top border of the card's header. */
+
+.card{
+    flex-basis: 450px;
+    border-radius: 50px 50px 0 0;
+}
+
+/*8. Style the pricing class in order to disply flex so the cards don't stretch horizontally along the  page. Use flex-wrap to wrap the card so that they move to the newline.  Use justify-content in order to center the cards horizontally and align-items in order to center them vertically. */
+
+.pricing{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*9. Style the gallery class in order to display flex so the images are of the same width. Use flex-wrap to wrap the images so they move to the newline. Use justify-content to move the images to the center. */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*9. Style the gallery class in order to apply the specified properties, such as width, border and margin for the images in the gallery class. */
+
+.gallery img{
+    width:300px;
+    border: solid 10px #50C7C7;
+    margin: 10px;
+}
+
+/*10. Style the elements for the screen-size greater than 900px using the media query. */
+
+@media (min-width:901px){
+
+    /*11. Style the header element using flex properties so that the contents lie horizontally and have a space between them. Use flex-direction row on nav_links class in order to achieve the nav items lie horizontally. */
+
+    header{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /*12. Style the pricing and card classes using flex-basis so that they all have the same width of 275px. */
+
+    .pricing{
+        flex-basis: 275px;
+    }
+
+    .card{
+        flex-basis: 275px;
+    }
+
+    /*13. (Challenge-2) Style the first header so that the header becomes visible at the top even while scrolling. */
+
+    body > header {
+        position: sticky;
+        top: 0px;
+        width: 100%;
+    }
+}
+
+/*14. Remove animation if the user selects preferes reduced motion feature. */
+
+@media (prefers-reduced-motion){
+    #logo{
+        animation: none;
+    }
+}
+
+/* Style the print view by selecting print for media. */
+
+@media print {
+
+    /*15-16. Style body by selecting Arial font and Helvetica as a backup font. Set background image to none to remove the default image. */
+
+    body {
+      font-family: Arial, Helvetica;
+      background-image: none;
+
+    }
+
+    /*17. Style nav element and nav_links class by setting the width to 100% to increase the width of the items because the default width is not wide enough. Then, set flex-direction to row to make the items lay inline and use justify content as space-around. */
+
+    nav {
+        width: 100%;
+    }
+
+    .nav_links{
+        flex-direction: row;
+        justify-content:  space-around;
+    }
+
+    /*18. Style pricing class by setting flex-wrap to nowrap so that the cards stay on the same row without moving to the next row. Make all the cards bottom align on the same row. */
+
+    .pricing{
+        flex-wrap: nowrap;
+        align-items: flex-end; 
+    }
+    
+    /*19. Style card class with the initial width of 325px and setting 2px solid border with specified color. Set align-self to flex-end so that the cards bottom align on the same row. */
+
+    .card{
+        flex-basis: 325px;
+        border: solid 2px #45ADDD;
+        align-self: flex-end;
+    }
+    
+    /*20. Make the gallery class hidden.  */
+
+    div + h2 {
+        visibility: hidden;
+    }
+
+    /*20. Don't display the gallery header. */
+
+    .gallery{
+        display: none;
+    }
+
+    /* Add a page break so that the footer moves down to the next page. */
+
+    main {page-break-after: always;}
+    
+    /*21. (Challenge-3) Add a thumbs up symbol after the 2nd child of the unordered list of the card class. */
+
+    .card ul li:nth-child(2)::after{ 
+        content: "\1F44D";
+      } 
+
+  }
